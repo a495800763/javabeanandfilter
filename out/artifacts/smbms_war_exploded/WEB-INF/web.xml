@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <servlet>
+        <servlet-name>test</servlet-name>
+        <servlet-class>com.liumq.servletsudy.smbms.servlet.ShowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>test</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>loginServ</servlet-name>
+        <servlet-class>com.liumq.servletsudy.smbms.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServ</servlet-name>
+        <url-pattern>/servlet/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logoutServ</servlet-name>
+        <servlet-class>com.liumq.servletsudy.smbms.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logoutServ</servlet-name>
+        <url-pattern>/servlet/logout</url-pattern>
+    </servlet-mapping>
+
+
+    <filter>
+        <filter-name>charencodingfilter</filter-name>
+        <filter-class>com.liumq.servletsudy.smbms.filter.CharacterEncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>charencodingfilter</filter-name>
+        <!--针对名为test 的servlet 进行过滤-->
+        <servlet-name>test</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>SysFilter</filter-name>
+        <filter-class>com.liumq.servletsudy.smbms.filter.SysFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SysFilter</filter-name>
+        <!--针对名为test 的servlet 进行过滤-->
+        <url-pattern>/sys/*</url-pattern>
+    </filter-mapping>
+
+
+    <listener>
+        <listener-class>com.liumq.servletsudy.smbms.listener.OnlineCountListener</listener-class>
+    </listener>
+
+</web-app>
